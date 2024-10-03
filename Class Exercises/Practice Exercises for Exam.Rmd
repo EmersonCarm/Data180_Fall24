@@ -15,7 +15,10 @@ output: html_document
 
 ```{r}
 # Your code here
-
+my_number <- 42
+greeting <- "Hello, R!"
+is_sunny <- FALSE
+print(greeting)
 ```
 
 ---
@@ -41,7 +44,9 @@ output: html_document
 
 ```{r}
 # Your code here
-
+temperatures <- c(23,17,21,19,25)
+fruits <- c("apple", "banana", "cherry")
+my_sequence <- 1:20
 ```
 
 ---
@@ -56,6 +61,9 @@ Using the `temperatures` vector from the previous exercise:
 
 ```{r}
 # Your code here
+mean(temperatures)
+median(temperatures)
+var(temperatures)
 
 ```
 
@@ -69,7 +77,18 @@ Using the `temperatures` vector from the previous exercise:
 
 ```{r}
 # Your code here
+for(i in 1:10){
+  print(i)
+}
 
+for(i in fruits){
+  print(i)
+}
+squares <- 1:5
+for(i in 1:5){
+  squares[i] <- c(i^2)
+  print(squares)
+}
 ```
 
 ---
@@ -82,6 +101,23 @@ Using the `temperatures` vector from the previous exercise:
 
 ```{r}
 # Your code here
+add_three <- function(x){
+  return(x+3)
+}
+is_even <- function(y){
+  if_even <- (y %% 2)
+  if(if_even = 0){
+    TRUE
+  }
+  else{
+    FALSE
+  
+  }
+}
+
+fahrenheit_to_celsius <-function(F){
+  return((F-32)*5/9)
+}
 
 ```
 
@@ -138,6 +174,14 @@ fahrenheit_to_celsius <- function(f) {
 
 ```{r}
 # Your code here
+students <- data.frame(
+  Names = c("Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona", "George", "Hannah", "Irene", "Jack"),
+  Age = c(20,22,19,21,23,20,22,21,20,22),
+  Major = c("Mathematics", "Physics", "Engineering", "Biology", "Computer Science", "Chemistry", "Economics", "Psychology", "Art", "Literature")
+  
+)
+students$GPA <- (GPA = c(3.5, 3.8, 3.2, 3.7, 3.9, 3.4, 3.6, 3.8, 3.3, 3.7))
+
 
 ```
 
@@ -151,7 +195,8 @@ fahrenheit_to_celsius <- function(f) {
 
 ```{r}
 # Your code here
-
+library(MASS)
+data(Boston)
 ```
 
 ---
@@ -166,7 +211,8 @@ Using the `Boston` data set:
 
 ```{r}
 # Your code here
-
+plot(Boston$medv, Boston$lstat)
+    
 ```
 
 ---
@@ -207,6 +253,7 @@ Using the `cars` dataset:
 ```{r}
 # Your code here
 
+ggplot(data$Boston, aes())
 ```
 
 ---
