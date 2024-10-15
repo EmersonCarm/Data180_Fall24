@@ -24,7 +24,7 @@ a) The `Marketing` department has been renamed to `Sales and Marketing`. Update 
 
 ```{r}
 # Replace the incorrect entry in the vector
-departments[departments == "Marketing"] <- "Sales and Marketing"
+departments[4] <- "Sales and Marketing"
 ```
 
 b) Write a function named `print_departments` that takes a vector of departments and prints each department along with its position in the vector (e.g., "1: Finance").
@@ -32,8 +32,8 @@ b) Write a function named `print_departments` that takes a vector of departments
 ```{r}
 # Create the function to print each department and its position
 print_departments <- function(departments) {
-  for (i in seq_along(departments)) {
-    cat(i, ":", departments[i], "\n")
+  for (i in departments) {
+    print(i)
   }
 }
 
@@ -81,7 +81,7 @@ f) Calculate the mean and median budget.
 mean(department_budget$Budget)
 median(department_budget$Budget)
 ```
----
+
 
 ## Problem 2
 (Each part worth 4 points)
@@ -124,13 +124,13 @@ sales_data$Performance <-perf
 sales_data
 ```
 
-c) Plot a bar chart that shows the total sales of `Product_A` and `Product_B` across all quarters.
+c) Plot a bar chart that shows the total sales of `Product_A` and `Product_B` combined across all quarters. Do this in both base R and ggplot2.
 
 ```{r}
 # Plot the bar chart
-barplot(height = rbind(sales_data$Product_A, sales_data$Product_B), beside = TRUE,
-        names.arg = sales_data$Quarter, legend = c("Product A", "Product B"),
-        main = "Total Sales of Product A and Product B by Quarter", ylab = "Sales ($)")
+library(ggplot2)
+barplot(sales_data$Total_Sales,col=c(1:4),names=sales_data$Quarter,xlab="Quarters",ylab="Total Sales")
+ggplot(sales_data,aes(Quarter,Total_Sales))+geom_bar(stat="identity",fill=1:4)
 ```
 
 d) Write a function named `quarter_summary` that takes the sales data and returns the average sales of `Product_A` and `Product_B`.
@@ -140,7 +140,8 @@ d) Write a function named `quarter_summary` that takes the sales data and return
 quarter_summary <- function(sales_data) {
   avg_product_a <- mean(sales_data$Product_A)
   avg_product_b <- mean(sales_data$Product_B)
-  return(list(Average_Product_A = avg_product_a, Average_Product_B = avg_product_b))
+  result <- c(avg_product_a,avg_product_b)
+  return(result)
 }
 
 quarter_summary(sales_data)
@@ -187,14 +188,6 @@ course_summary <- function(courses) {
 course_summary(courses)
 ```
 
-c) Find and print the names of students whose course has a difficulty level of "Hard".
-
-```{r}
-# Find students enrolled in courses with difficulty level "Hard"
-hard_courses <- student_courses$Course[course_difficulty == "Hard"]
-students_in_hard_courses <- student_courses$Student[student_courses$Course %in% hard_courses]
-students_in_hard_courses
-```
 
 
 ---
